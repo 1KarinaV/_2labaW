@@ -1,0 +1,115 @@
+body, button {
+    font-family: 'Roboto Slab', serif;
+}
+
+header {
+    background-color: #6c43af;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 1.15%;
+    margin: -0.51% -0.51% 0 -0.51%;
+}
+
+#variant {
+    float: right;
+}
+
+svg {
+    margin: 1.28% 0 0 0.64%;
+}
+
+.axis, button[type="button"]:hover {
+    font-weight: bold;
+}
+
+.form {
+    margin-left: 0.64%;
+}
+
+button[type = "button"] {
+    width: 53px;
+    margin-right: 0.67%;
+    background-color: #6c43af;
+    border-width: 1px;
+}
+
+.main-buttons button {
+    width: 122px;
+    background-color: #6c43af;
+    border-width: 1px;
+    margin-right: 0.55%;
+}
+
+.main-buttons {
+    margin-left: 4.1%;
+}
+
+::placeholder, input[type="text"] {
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+}
+
+.table {
+    width: 70%;
+    float: right;
+    margin-top: 1.28%;
+    margin-right: 0.64%;
+}
+
+th {
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #6c43af;
+    color: #ffffff;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+td {
+    text-align: center;
+    font-size: 22px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.coords-column {
+    width: 8%;
+}
+
+.time-column {
+    width: 27%;
+}
+
+.shape {
+    fill: lightgray;
+    stroke: gray;
+    stroke-width: 2;
+    fill-opacity: 0.5;
+    stroke-opacity: 0.2;
+}
+
+.shape:hover {
+    fill-opacity: 0.1;
+}
+
+.main-buttons button:hover {
+    color: white;
+    background-color: #513284;
+}
+
+.text-error, .buttons-error button {
+    border-color: red;
+}
+
+.radio-error {
+    color: red;
+}
+
+button[type="button"].selected-r {
+    color: white;
+    background-color: #c8b5e9;
+}
