@@ -69,37 +69,43 @@
     </table>
 </div>
 <div class="plane">
-    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
-        <line x1="0" y1="150" x2="300" y2="150" stroke="#000720"></line>
-        <line x1="150" y1="0" x2="150" y2="300" stroke="#000720"></line>
-        <line x1="270" y1="148" x2="270" y2="152" stroke="#000720"></line>
-        <text x="265" y="140">R</text>
-        <line x1="210" y1="148" x2="210" y2="152" stroke="#000720"></line>
-        <text x="200" y="140">R/2</text>
-        <line x1="90" y1="148" x2="90" y2="152" stroke="#000720"></line>
-        <text x="75" y="140">-R/2</text>
-        <line x1="30" y1="148" x2="30" y2="152" stroke="#000720"></line>
-        <text x="20" y="140">-R</text>
-        <line x1="148" y1="30" x2="152" y2="30" stroke="#000720"></line>
-        <text x="156" y="35">R</text>
-        <line x1="148" y1="90" x2="152" y2="90" stroke="#000720"></line>
-        <text x="156" y="95">R/2</text>
-        <line x1="148" y1="210" x2="152" y2="210" stroke="#000720"></line>
-        <text x="156" y="215">-R/2</text>
-        <line x1="148" y1="270" x2="152" y2="270" stroke="#000720"></line>
-        <text x="156" y="275">-R</text>
-        <polygon points="300,150 295,155 295, 145" fill="#000720" stroke="#000720"></polygon>
-        <polygon points="150,0 145,5 155,5" fill="#000720" stroke="#000720"></polygon>
-        <rect x="150" y="150" width="120" height="60" fill-opacity="0.4" stroke="navy" fill="blue"></rect>
-        <polygon points="150,150 90,150 150,90" fill-opacity="0.4" stroke="navy" fill="blue"></polygon>
-        <path d="M 150 90 A 120 120 0 0 1 210 150 L 150 150 Z" fill-opacity="0.4" stroke="navy" fill="blue"></path>
-        <circle id="pointer" r="5" cx="150" cy="150" fill-opacity="0.7" fill="red" stroke="firebrick" visibility="hidden"></circle>
+    <svg width="386" height="386">
+        <rect width="386" height="386" style="fill: white; stroke: black; stroke-width: 8px"></rect>
+
+        <line x1="193" y1="0" x2="193" y2="386" style="stroke: black; stroke-width: 3px"></line>
+        <line x1="0" y1="193" x2="386" y2="193" style="stroke: black; stroke-width: 3px"></line>
+        <polygon points="383 193 367 183 367 203" style="fill: black"></polygon>
+        <polygon points="193 3 183 20 203 20" style="fill: black"></polygon>
+
+        <line x1="263" y1="198" x2="263" y2="188" style="stroke: black; stroke-width: 2px"></line>
+        <line x1="333" y1="198" x2="333" y2="188" style="stroke: black; stroke-width: 2px"></line>
+        <line x1="123" y1="198" x2="123" y2="188" style="stroke: black; stroke-width: 2px"></line>
+        <line x1="53" y1="198" x2="53" y2="188" style="stroke: black; stroke-width: 2px"></line>
+        <line x1="198" y1="263" x2="188" y2="263" style="stroke: black; stroke-width: 2px"></line>
+        <line x1="198" y1="333" x2="188" y2="333" style="stroke: black; stroke-width: 2px"></line>
+        <line x1="198" y1="123" x2="188" y2="123" style="stroke: black; stroke-width: 2px"></line>
+        <line x1="198" y1="53" x2="188" y2="53" style="stroke: black; stroke-width: 2px"></line>
+
+        <text class="axis" x="367" y="177">X</text>
+        <text class="axis" x="204" y="19">Y</text>
+        <text x="204" y="58">R</text>
+        <text x="204" y="128">R/2</text>
+        <text x="204" y="268">-R/2</text>
+        <text x="204" y="338">-R</text>
+        <text x="328" y="177">R</text>
+        <text x="250" y="177">R/2</text>
+        <text x="105" y="177">-R/2</text>
+        <text x="42" y="177">-R</text>
+
+        <rect class="shape" x="193" y="193" width="145" height="70"></rect>
+        <polygon class="shape" points="193 193 123 193 193 123"></polygon>
+        <path class="shape" d="M 193 123 A 70 70 0 0 1 263 193 L 193 193 Z"></path>
 
         <%
             for (Result result : results) {
         %>
-        <circle r="5" cx="<%=150 + Math.round(120 * result.getX() / result.getR())%>"
-                cy="<%=150 - Math.round(120 * result.getY() / result.getR())%>" fill="cyan"
+        <circle r="5" cx="<%=193 + Math.round(140 * result.getX() / result.getR())%>"
+                cy="<%=193 - Math.round(140 * result.getY() / result.getR())%>" fill="cyan"
                 fill-opacity="0.85"></circle>
         <%
             }
@@ -110,22 +116,7 @@
     <form method="post">
         <br>
         <br>
-        <div>
-            <label>Y value:</label>
-            <label><input type="text" size="38" maxlength="4" name="y-value"
-                          placeholder="Y ∈ ( -3 ; 3 )"></label>
-        </div>
-        <br>
-        <div>
-            <label>R value:</label>
-            <label class="checkbox"><input type="checkbox" name="r-value" value="1">1</label>
-            <label class="checkbox"><input type="checkbox" name="r-value" value="2">2</label>
-            <label class="checkbox"><input type="checkbox" name="r-value" value="3">3</label>
-            <label class="checkbox"><input type="checkbox" name="r-value" value="4">4</label>
-            <label class="checkbox"><input type="checkbox" name="r-value" value="5">5</label>
-        </div>
-        <br>
-        <div id="r-buttons">
+        <div id="X_form">
             <label>X value:</label>
             <button type="button" name="x-value" value="-2">-2</button>
             <button type="button" name="x-value" value="-1.5">-1.5</button>
@@ -136,6 +127,21 @@
             <button type="button" name="x-value" value="1">1</button>
             <button type="button" name="x-value" value="1.5">1.5</button>
             <button type="button" name="x-value" value="2">2</button>
+        </div>
+        <br>
+        <div id="Y_form">
+            <label>Y value:</label>
+            <label><input type="text" size="38" maxlength="4" name="y-value"
+                          placeholder="X ∈ ( -3 ; 3 )"></label>
+        </div>
+        <br>
+        <div id="R_form">
+            <label>R value:</label>
+            <label class="checkbox-block"><input type="checkbox" name="r-value" value="1">1</label>
+            <label class="checkbox-block"><input type="checkbox" name="r-value" value="2">2</label>
+            <label class="checkbox-block"><input type="checkbox" name="r-value" value="3">3</label>
+            <label class="checkbox-block"><input type="checkbox" name="r-value" value="4">4</label>
+            <label class="checkbox-block"><input type="checkbox" name="r-value" value="5">5</label>
         </div>
         <br>
         <div class="main-buttons">

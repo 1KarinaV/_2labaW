@@ -42,15 +42,6 @@ public class AreaCheckServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/error.jsp").forward(req, resp);
     }
 
-    private boolean validateY(String y) {
-        try {
-            double yNum = Double.parseDouble(y);
-            return yNum > -3 && yNum < 3;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
     private boolean validateX(String x) {
         String[] values = {"-2", "-1.5", "-1", "-0.5", "0", "0.5", "1", "1.5", "2"};
         for (String value : values) {
@@ -60,6 +51,16 @@ public class AreaCheckServlet extends HttpServlet {
         }
         return false;
     }
+
+    private boolean validateY(String y) {
+        try {
+            double yNum = Double.parseDouble(y);
+            return yNum > -3 && yNum < 3;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 
     private boolean validateR(String r) {
         String[] values = {"1", "2", "3", "4", "5"};
@@ -76,11 +77,11 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private boolean checkCircle(double x, double y, double r) {
-        return x >= 0 && y >= 0 && x <= r/2 &&  Math.sqrt(x * x + y * y) <= r / 2;
+        return x >= 0 && x<=r/2 && y >= 0 && y<=(r/2*r/2) - (x*x);
     }
 
     private boolean checkTriangle(double x, double y, double r) {
-        return x <= 0 && y >= 0 && 2*x + 2*y <=r;
+        return x <= 0 && y >= 0 && x>=-r/2 && y<=r/2;
     }
 
     private boolean checkRectangle(double x, double y, double r) {

@@ -19,8 +19,8 @@ $(function () {
     }
 
     function getX() {
-        if ($("#r-buttons").hasClass("ready")) {
-            return parseFloat($("button[type='button'].selected-r").val());
+        if ($("#x-buttons").hasClass("ready")) {
+            return parseFloat($("button[type='button'].selected-x").val());
         } else {
             return NaN;
         }
@@ -39,22 +39,31 @@ $(function () {
         }
     }
 
-    function validateR() {
-        if ($("input[type='checkbox']").is(":checked")) {
-            $(".checkbox").removeClass("checkbox-error");
+    /*unction validateX() {
+        if ($("input[type='button']").is(":checked")) {
+            $(".button-block").removeClass("button-error");
             return true;
         } else {
-            $(".checkbox").addClass("checkbox-error");
+            $(".button-block").addClass("button-error");
+            return false;
+        }
+    }*/
+    function validateX() {
+        if (#X-form !== undefined) {
+            $('.input-form__info').text('Choose coordinate')
+            return true;
+        } else {
+            $('.input-form__info').text('Choose X!')
             return false;
         }
     }
 
-    function validateX() {
-        let ready = $("#r-buttons").hasClass("ready");
+    function validateR() {
+        let ready = $("#R_form").hasClass("ready");
         if (!ready) {
-            $("#r-buttons").addClass("buttons-error");
+            $("#R_form").addClass("checkbox-error");
         } else {
-            $("#r-buttons").removeClass("buttons-error");
+            $("#R_form").removeClass("checkbox-error");
         }
         return ready;
     }
@@ -66,21 +75,21 @@ $(function () {
         return x && y && r;
     }
 
-    $("button[type='button']").click(function () {
+    $("input[name='r-value']").click(function () {
         if ($(this).hasClass("selected-r")) {
             $(this).removeClass("selected-r");
-            $("#r-buttons").removeClass("ready");
+            $("#R_form").removeClass("ready");
         } else {
             $(this).addClass("selected-r");
-            $(this).siblings("button.selected-r").removeClass("selected-r");
-            $("#r-buttons").addClass("ready");
+            $(this).siblings("input.selected-r").removeClass("selected-r");
+            $("#R_form").addClass("ready");
         }
     });
 
     $("button[type='reset']").click(function () {
-        if ($("button[type='button']").hasClass("selected-r")) {
-            $("button[type='button']").removeClass("selected-r");
-            $("#r-buttons").removeClass("ready");
+        if ($("input[name='r-value']").hasClass("selected-r")) {
+            $("input[name='r-value']").removeClass("selected-r");
+            $("#R_form").removeClass("ready");
         }
         clearTable();
     })
@@ -110,8 +119,8 @@ $(function () {
             let x = parseFloat(row.cells[0].innerText);
             let y = parseFloat(row.cells[1].innerText);
             let r = parseFloat(row.cells[2].innerText);
-            let cX = 150 + x * 120 / r;
-            let cY = 150 - y * 120 / r;
+            let cX = 193 + x * 140 / r;
+            let cY = 193 - y * 140 / r;
             $("svg").append(`<circle r="5" cx=${cX} cy=${cY} fill="cyan"
                 fill-opacity="0.85"></circle>`);
         })
@@ -130,12 +139,12 @@ $(function () {
     }
 
     $("svg").click(function (e) {
-        if ($("#r-buttons").hasClass("ready")) {
-            let x = (e.offsetX - 150) * getR() / 120;
-            let y = (150 - e.offsetY) * getR() / 120;
+        if ($("#R_form").hasClass("ready")) {
+            let x = (e.offsetX - 193) * getR() / 140;
+            let y = (193 - e.offsetY) * getR() / 140;
             requestWithArgs(x.toFixed(1), y.toFixed(1));
         } else {
-            alert("Choose X value.");
+            alert("Choose R value.");
         }
     })
 });
